@@ -1,13 +1,50 @@
+* {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  font-size: 100%;
+  vertical-align: baseline;
+  background: transparent;
+}
+
+@import url("https://fonts.googleapis.com/css?family=Farro:regular,bold,italic&subset=latin,latin-ext");
+
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+  font-family: "Farro", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
+.NavBar {
+  float: left;
+  padding: 0px;
+
+  width: 50px;
+  border-right: 1px;
+  border-right-style: solid;
+  border-right-color: black;
+
+  height: 100%;
+  position: fixed;
+  left: 0;
+  background-color: rgb(235, 235, 235);
+  overflow-x: hidden;
+  overflow-y: hidden;
+}
+
+.NotNavBar {
+  margin-left: 51px;
+  padding-top: 25px;
+  padding-left: 25px;
+}
+
+h1 {
+  font-size: 24px;
+}
+
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }

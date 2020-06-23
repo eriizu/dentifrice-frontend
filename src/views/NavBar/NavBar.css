@@ -1,0 +1,18 @@
+.NavItem {
+  height: 50px;
+  width: 50px;
+  margin-bottom: 1px;
+  padding-bottom: 1px;
+  border-bottom: 1px;
+  border-bottom-style: solid;
+  border-bottom-color: black;
+}
+.NavItem img {
+  padding: 12.5%;
+  height: 75%;
+  width: 75%;
+}
+
+.NavBar a:hover {
+  font-size: 78px;
+}
