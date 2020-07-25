@@ -8,9 +8,9 @@
   border-bottom-color: black;
 }
 .NavItem img {
-  padding: 12.5%;
-  height: 75%;
-  width: 75%;
+  padding: 25%;
+  height: 50%;
+  width: 50%;
 }
 
 .NavBar a:hover {

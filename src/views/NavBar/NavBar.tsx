@@ -12,13 +12,13 @@ function NavBar() {
         <img src={logoPorteEponge} alt="porte éponge"></img>
       </div>
       <div className="NavItem">
-        <img src={logoCalendar} alt="calendar icon"></img>
-      </div>
-      <div className="NavItem">
         <img src={logoEuro} alt="euro icon"></img>
       </div>
       <div className="NavItem">
         <img src={logoThinking} alt="thinking bubble icon"></img>
+      </div>
+      <div className="NavItem">
+        <img src={logoCalendar} alt="calendar icon"></img>
       </div>
     </div>
   );

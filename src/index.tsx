@@ -1,15 +1,25 @@
-import React from "react";
+import React, { Suspense } from "react";
 import ReactDOM from "react-dom";
 import "./index.css";
 import NavBar from "./views/NavBar";
-import Old from "./views/Old";
+import Login from "./views/Login";
 import * as serviceWorker from "./serviceWorker";
+
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
 ReactDOM.render(
   <React.StrictMode>
     <NavBar />
     <div className="NotNavBar">
-      <h1>Dashboard</h1>
+      <Router>
+        <Suspense fallback={<div>Loading...</div>}>
+          <Switch>
+            <Route exact path="/" render={() => <h1>Bonjour</h1>} />
+            <Route path="/about" render={() => <h1>About</h1>} />
+            <Route path="/login" component={Login} />
+          </Switch>
+        </Suspense>
+      </Router>
     </div>
 
     {/* <Old /> */}
