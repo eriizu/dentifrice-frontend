@@ -1,0 +1,89 @@
+* {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  font-size: 100%;
+  vertical-align: baseline;
+  background: transparent;
+  overflow-x: hidden;
+  overflow-y: hidden;
+}
+
+@import url("https://fonts.googleapis.com/css?family=Farro:regular,bold,italic&subset=latin,latin-ext");
+
+body {
+  margin: 0;
+  font-family: "Farro", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  /* display: flex; */
+  /* align-content: center;
+  justify-content: center; */
+}
+
+.centerContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.main {
+  max-width: 1250px;
+  max-height: 750px;
+
+  /* min-width: 1250px;
+  min-height: 750px; */
+
+  /* align-content: center; */
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  /* position: relative; */
+
+  margin-top: auto;
+  margin-bottom: auto;
+  margin-left: auto;
+  margin-right: auto;
+
+  display: grid;
+  border: 1px dashed black;
+
+  /* gap: 10px 10px; */
+  grid-template-columns: 200px 1fr;
+  grid-template-rows: 50px 1fr;
+  grid-template-areas: "logo title" "nav content";
+}
+
+.main > * {
+  padding: 20px;
+}
+
+.logo {
+  text-align: right;
+  grid-area: logo;
+  border-right: 1px black;
+  border-right-style: solid;
+}
+
+.content {
+  grid-area: content;
+}
+
+.nav {
+  grid-area: nav;
+  border-right: 1px black;
+  border-right-style: solid;
+  text-align: right;
+}
+
+.monospaced {
+  font: monospace;
+}
+
+/* <div class="main">
+  <div class="nav">tata</div>
+  <div class="content">jaja</div>
+</div> */

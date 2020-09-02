@@ -7,7 +7,7 @@ import logoPorteEponge from "../../assets/porte-eponge.jpg";
 
 function NavBar() {
   return (
-    <div className="NavBar">
+    <div className="nav">
       <div className="NavItem">
         <img src={logoPorteEponge} alt="porte éponge"></img>
       </div>

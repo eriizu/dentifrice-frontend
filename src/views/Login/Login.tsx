@@ -1,7 +1,6 @@
 import React from "react";
 import { RouteComponentProps } from "react-router-dom";
 import querystring from "query-string";
-
 interface IState {
   access_token?: string;
 }
@@ -25,8 +24,12 @@ export class Login extends React.Component<RouteComponentProps, IState> {
         );
 
         let body = await res.json();
-        if (body?.access_token)
+        if (body?.access_token) {
           this.setState({ access_token: body.access_token });
+          localStorage.setItem("access_token", body.access_token);
+          localStorage.setItem("refresh_token", body.refresh_token);
+          this.props.history.goBack();
+        }
       } catch (err) {
         console.error(err);
         setTimeout(() => {
