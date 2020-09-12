@@ -1,5 +1,4 @@
-.clockCard {
-  /* margin-top: 5px; */
+/* .clockCard {
   grid-area: clockCard;
   border-radius: 5px;
   border: 1px solid rgb(54, 54, 54);
@@ -8,19 +7,21 @@
 
 .clockCardContainer > button {
   grid-area: clockButton;
-}
+} */
 .clockList {
+  max-height: inherit;
+
   margin-top: 10px;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   grid-gap: 20px;
 }
 
-.clockCardContainer {
+/* .clockCardContainer {
   display: grid;
   grid-template-rows: 3fr 1fr;
   grid-template-areas:
     "clockCard clockCard clockCard"
     ". . clockButton";
   min-width: 100px;
-}
+} */

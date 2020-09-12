@@ -10,6 +10,9 @@ function NavBar() {
       <p>
         <Link to="/counters">Counter</Link>
       </p>
+      <p>
+        <Link to="/login">Login</Link>
+      </p>
       {/* <Link to="/counters">Counters</Link> */}
     </React.Fragment>
   );

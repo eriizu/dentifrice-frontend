@@ -1,0 +1,25 @@
+.clockCardContainer > button {
+  grid-area: clockButton;
+}
+
+.clockCardContainer {
+  display: grid;
+  grid-template-rows: 5fr 1fr;
+  grid-template-areas:
+    "clockCard clockCard clockCard"
+    ". . clockButton";
+  min-width: 100px;
+}
+
+.clockCard {
+  /* margin-top: 5px; */
+  grid-area: clockCard;
+  border-radius: 5px;
+  border: 1px solid rgb(54, 54, 54);
+  padding: 20px;
+}
+
+.clockCardSubtext {
+  margin-top: 2px;
+  color: gray;
+}

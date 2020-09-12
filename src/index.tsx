@@ -4,9 +4,12 @@ import "./dentifrice.css";
 import NavBar from "./views/NewNavBar";
 import Login from "./views/Login";
 import ClockList from "./views/ClockList";
+import ClockEditor from "./views/ClockEditor";
 import * as serviceWorker from "./serviceWorker";
 
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+
+import Notifications from "react-notify-toast";
 
 class Root extends React.Component<{}, { title: string }> {
   constructor(props: {}) {
@@ -16,12 +19,13 @@ class Root extends React.Component<{}, { title: string }> {
 
   setTitle(title: string) {
     this.setState({ title: title });
-    console.log(this.state);
+    document.title = title + " - Dentifrice";
   }
 
   render() {
     return (
       <React.StrictMode>
+        <Notifications></Notifications>
         <Router>
           <div className="centerContainer">
             <div className="main">
@@ -33,11 +37,16 @@ class Root extends React.Component<{}, { title: string }> {
               <div className="content">
                 <Suspense fallback={<div>Loading...</div>}>
                   <Switch>
+                    <Route path="/" exact render={() => <p>Bonjour</p>}></Route>
                     <Route
-                      path="/"
-                      exact
-                      render={() => <div className="monospaced">Bonjour</div>}
-                    ></Route>
+                      path="/clocks/editor"
+                      render={(props) => (
+                        <ClockEditor
+                          {...props}
+                          setTitle={(title) => this.setTitle(title)}
+                        />
+                      )}
+                    />
                     <Route
                       path="/clocks"
                       render={(props) => (
@@ -47,8 +56,16 @@ class Root extends React.Component<{}, { title: string }> {
                         />
                       )}
                     />
+                    <Route
+                      path="/login"
+                      render={(props) => (
+                        <Login
+                          {...props}
+                          setTitle={(title) => this.setTitle(title)}
+                        />
+                      )}
+                    />
                     <Route path="/about" render={() => <h1>About</h1>} />
-                    <Route path="/login" component={Login} />
                   </Switch>
                 </Suspense>
               </div>

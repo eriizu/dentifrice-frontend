@@ -31,6 +31,7 @@ body {
 .main {
   max-width: 1250px;
   max-height: 750px;
+  height: auto;
 
   /* min-width: 1250px;
   min-height: 750px; */
@@ -52,8 +53,8 @@ body {
   border: 1px dashed black;
 
   /* gap: 10px 10px; */
-  grid-template-columns: 200px 1fr;
-  grid-template-rows: 50px 1fr;
+  grid-template-columns: 100px auto;
+  grid-template-rows: 50px auto;
   grid-template-areas: "logo title" "nav content";
 }
 
@@ -70,6 +71,8 @@ body {
 
 .content {
   grid-area: content;
+  max-height: minmax(0, 1fr);
+  overflow-y: unset;
 }
 
 .nav {

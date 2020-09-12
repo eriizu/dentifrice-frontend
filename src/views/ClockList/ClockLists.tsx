@@ -1,6 +1,8 @@
 import React from "react";
 import { RouteComponentProps } from "react-router-dom";
 import "./Clock.css";
+import ClockCard from "../ClockCard";
+
 interface Clock {
   name: string;
   start: Date;
@@ -62,15 +64,15 @@ export default class ClockList extends React.Component<
     if (this.state?.clocks)
       return (
         <React.Fragment>
-          <ul className="clockList">
-            {this.state.clocks.map((clk, index) => {
-              return <li key={index}>{clk.name}</li>;
+          <div className="clockList">
+            {this.state.clocks.map((clk, key) => {
+              return (
+                <ClockCard key={key} clock={clk} buttons={true}></ClockCard>
+              );
             })}
+
             {this.getCard()}
-            {this.getCard()}
-            {this.getCard()}
-            {this.getCard()}
-          </ul>
+          </div>
         </React.Fragment>
       );
     else
