@@ -108,9 +108,9 @@ export default class Dentifrice {
 
   async getAllClocks() {
     try {
-      let clocks = await this.retryIfTokenExpired(
-        async () => await this.get("/clocks")
-      );
+      // let clocks = await this.retryIfTokenExpired(
+      //   async () => await this.get("/clocks")
+      // );
       // let clocks = await this.get("/clocks");
     } catch (err) {
       this.handlerError(err);
