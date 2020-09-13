@@ -1,6 +1,8 @@
 import bent from "bent";
 
 import { notify } from "react-notify-toast";
+import { IClock } from "../resources/Clocks";
+import { isStatusError } from "./isStatusError";
 import * as ResponseType from "./ResponseType";
 
 export type DentifriceErrorType =
@@ -44,7 +46,7 @@ export default class Dentifrice {
   }
 
   get post() {
-    return bent("json", "POST", 201, this.baseUrl, this.authHeader);
+    return bent("json", "POST", 201, this.baseUrl, { ...this.authHeader });
   }
 
   get get() {
@@ -72,7 +74,8 @@ export default class Dentifrice {
   }
 
   handlerError(err: any) {
-    if (err instanceof bent.StatusError) {
+    console.log("err", err);
+    if (isStatusError(err)) {
       switch (err.statusCode) {
         case 401:
           this.token.access = null;
@@ -94,9 +97,11 @@ export default class Dentifrice {
     try {
       return await call();
     } catch (err) {
-      if (err instanceof bent.StatusError) {
+      debugger;
+      if (isStatusError(err)) {
         if (err.statusCode === 401) {
           if (this.token.refresh) {
+            this.token.access = "";
             await this.exchangeDiscordCode(this.token.refresh, "REFRESH");
             return await call();
           }
@@ -107,14 +112,22 @@ export default class Dentifrice {
   }
 
   async getAllClocks() {
+    let res: bent.Json;
     try {
-      // let clocks = await this.retryIfTokenExpired(
-      //   async () => await this.get("/clocks")
-      // );
-      // let clocks = await this.get("/clocks");
+      res = await this.retryIfTokenExpired(
+        async () => await this.get("/clocks")
+      );
+      // for (let entry of res) {
+      //   assert(isClock(entry));
+      // }
+      return res as IClock[];
     } catch (err) {
       this.handlerError(err);
     }
+  }
+
+  async createClock(clock: IClock) {
+    await this.post("/clocks", clock);
   }
 }
 

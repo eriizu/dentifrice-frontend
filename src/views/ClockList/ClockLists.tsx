@@ -2,17 +2,11 @@ import React from "react";
 import { RouteComponentProps } from "react-router-dom";
 import "./Clock.css";
 import ClockCard from "../ClockCard";
-
-interface Clock {
-  name: string;
-  start: Date;
-  end: Date;
-  count: "UP" | "DOWN";
-  // author: string | any;
-}
+import { dentifrice } from "../../dataSources/Dentfrice";
+import { IClock } from "../../resources/Clocks";
 
 interface IState {
-  clocks: Clock[];
+  clocks: IClock[];
 }
 
 export default class ClockList extends React.Component<
@@ -20,17 +14,8 @@ export default class ClockList extends React.Component<
   IState
 > {
   async getClock() {
-    let token = localStorage.getItem("access_token");
-    if (!token) {
-      this.props.history.push("/login");
-    }
-    let res = await fetch(`http://localhost:9000/clocks`, {
-      headers: { Authorization: `Bearer ${token}` },
-    });
-
-    console.log(res);
-    let clocks: Clock[] = await res.json();
-    this.setState({ clocks });
+    let clocks = await dentifrice.getAllClocks();
+    if (clocks) this.setState({ clocks });
     console.log(clocks);
   }
 
@@ -61,7 +46,7 @@ export default class ClockList extends React.Component<
   }
 
   render() {
-    if (this.state?.clocks)
+    if (this.state?.clocks && this.state.clocks.length)
       return (
         <React.Fragment>
           <div className="clockList">

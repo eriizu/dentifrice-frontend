@@ -60,12 +60,12 @@ input[type="checkbox"] {
 
 .start {
   grid-area: start;
-  /* text-align: center; */
+  text-align: center;
 }
 
 .end {
   grid-area: end;
-  /* text-align: center; */
+  text-align: center;
 }
 
 .updownselection {
