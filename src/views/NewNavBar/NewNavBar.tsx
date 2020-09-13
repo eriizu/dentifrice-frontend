@@ -7,9 +7,16 @@ function NavBar() {
       <p>
         <Link to="/clocks">Clocks</Link>
       </p>
+      <br />
+      <p>
+        <Link to="/clocks/editor">Clock editor</Link>
+      </p>
+      <br />
+
       <p>
         <Link to="/counters">Counter</Link>
       </p>
+      <br />
       <p>
         <Link to="/login">Login</Link>
       </p>

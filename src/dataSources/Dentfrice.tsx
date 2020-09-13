@@ -5,6 +5,8 @@ import { IClock } from "../resources/Clocks";
 import { isStatusError } from "./isStatusError";
 import * as ResponseType from "./ResponseType";
 
+import config from "../config";
+
 export type DentifriceErrorType =
   | "E_STATUS_FORBIDDEN"
   | "E_STATUS_UNAUTHORIZED"
@@ -97,7 +99,6 @@ export default class Dentifrice {
     try {
       return await call();
     } catch (err) {
-      debugger;
       if (isStatusError(err)) {
         if (err.statusCode === 401) {
           if (this.token.refresh) {
@@ -131,4 +132,4 @@ export default class Dentifrice {
   }
 }
 
-export let dentifrice = new Dentifrice("http://localhost:9000");
+export let dentifrice = new Dentifrice(config.DENTIFRICE_BASE_URL);
